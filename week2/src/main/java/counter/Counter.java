@@ -1,12 +1,13 @@
 package counter;
 
-public class Counter {
+/**
+ * Hello world!
+ *
+ */
+public class Counter 
+{
     int count;
 
-    public Counter() {
-        this.count = 0;
-    }
-    
     public int increment() {
         this.count++;
         return this.count;

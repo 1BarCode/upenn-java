@@ -1,6 +1,5 @@
 {
-    "java.project.sourcePaths": [
-        "homework1/src"
-    ],
-    "java.configuration.updateBuildConfiguration": "interactive"
+	"java.project.sourcePaths": ["homework1/src"],
+	"java.configuration.updateBuildConfiguration": "interactive",
+	"editor.formatOnSave": true
 }
