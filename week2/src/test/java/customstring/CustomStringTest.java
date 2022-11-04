@@ -25,7 +25,15 @@ class CustomStringTest {
 		this.myCustomString.setString("hello");
 		assertEquals("hello", this.myCustomString.getString());
 		
-		// TODO write at least 3 additional test cases 
+		// TODO write at least 3 additional test cases
+		this.myCustomString.setString("");
+		assertEquals("", this.myCustomString.getString());
+
+		this.myCustomString.setString(null);
+		assertNull(this.myCustomString.getString());
+
+		this.myCustomString.setString("0");
+		assertEquals("0", this.myCustomString.getString());	
 	}
 	
 	@Test
@@ -38,6 +46,14 @@ class CustomStringTest {
 		assertEquals("Good-bye!", this.myCustomString.getString());
 		
 		// TODO write at least 3 additional test cases 
+		this.myCustomString.setString("");
+		assertTrue(this.myCustomString.isSet);
+
+		this.myCustomString.setString(null);
+		assertFalse(this.myCustomString.isSet);
+
+		this.myCustomString.setString("0");
+		assertEquals("0", this.myCustomString.getString());
 	}
 	
 	@Test
@@ -51,6 +67,14 @@ class CustomStringTest {
 		assertEquals("my lucky numbes e 6, 8, nd 19.", this.myCustomString.remove("ra6"));
 		
 		// TODO write at least 3 additional test cases 
+		this.myCustomString.setString("my lucky numbers are 6, 8, and 19.");
+		assertEquals(" luck nubers are 6, 8, and 19.", this.myCustomString.remove("my8"));
+
+		this.myCustomString.setString("my lucky numbers are 6, 8, and 19.");
+		assertEquals("my lucky numbers are 6, 8, and 19.", this.myCustomString.remove("RA6"));
+
+		this.myCustomString.setString("my lucky numbers are 6, 8, and 19.");
+		assertEquals(" luck nubers are 6, 8, and 19.", this.myCustomString.remove("my.8"));
 	}
 
 	@Test
@@ -63,7 +87,15 @@ class CustomStringTest {
 		this.myCustomString.setString("abc, XYZ; 123.");
 		assertEquals("aBC, xyz; 123.", this.myCustomString.reverse("bcdxyz@3210."));
 		
-		// TODO write at least 3 additional test cases 
+		// TODO write at least 3 additional test cases
+		this.myCustomString.setString("ABC, xyz- 123.");
+		assertEquals("Abc, XYZ- 123.", this.myCustomString.reverse("bcdxyz@3210-"));
+
+		this.myCustomString.setString("123.");
+		assertEquals("123.", this.myCustomString.reverse("bcdxyz@3210."));
+
+		this.myCustomString.setString("");
+		assertEquals("", this.myCustomString.reverse("bcdxyz@3210."));
 	}
 
 	@Test
@@ -74,6 +106,14 @@ class CustomStringTest {
 		assertEquals("", this.myCustomString.filterLetters('E', false));
 		
 		// TODO write at least 3 additional test cases 
+		this.myCustomString.setString("");
+		assertEquals("", this.myCustomString.filterLetters('E', false));
+
+		this.myCustomString.setString("Some real test.");
+		assertEquals("a", this.myCustomString.filterLetters('E', true));
+
+		this.myCustomString.setString("Some real test.");
+		assertEquals("Som rl tst.", this.myCustomString.filterLetters('E', false));
 	}
 
 }

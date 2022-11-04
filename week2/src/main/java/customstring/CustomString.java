@@ -1,7 +1,5 @@
 package customstring;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.*;  
 
 /**
@@ -51,7 +49,7 @@ public class CustomString {
      */
 	public String getString() {
 		// TODO Implement method
-		if (this.myString == null) {
+		if (this.myString == null || !this.isSet) {
 			return null;
 		}
 		return this.myString;
@@ -64,8 +62,13 @@ public class CustomString {
      */
 	public void setString(String string) {
 		// TODO Implement method
-		this.myString = string;
-		this.isSet = true;
+		if (string == null) {
+			this.myString = string;
+			this.isSet = false;
+		} else {
+			this.myString = string;
+			this.isSet = true;
+		}
 	}
 
     /**
@@ -87,8 +90,19 @@ public class CustomString {
      */
 	public String remove(String arg) {
 		// TODO Implement method
-		
-	  	return null;
+		if (arg == "" || arg == null || this.myString == null || !this.isSet) {return "";}
+
+		ArrayList<String> result = new ArrayList<String>();
+		char[] arrayOfChar = this.myString.toCharArray();
+
+		for (int i = 0; i < arrayOfChar.length; i++) {
+			if (!Character.isLetter(arrayOfChar[i]) || arg.indexOf(arrayOfChar[i]) == -1 ) {
+				result.add(Character.toString(arrayOfChar[i]));
+				System.out.println(result);
+			}
+		}
+
+		return String.join("", result); 
 	}
 	
 	/**
@@ -111,8 +125,26 @@ public class CustomString {
 	 */
 	public String reverse(String arg) {
 		// TODO Implement method 
+		if ( arg == null || this.myString == null || this.myString == "" || !this.isSet) {return "";}
 		
-		return null;
+		char[] arrayOfChar = this.myString.toCharArray();
+		ArrayList<String> result = new ArrayList<String>();
+
+		for(int i = 0; i < arrayOfChar.length; i++) {
+			boolean match = arg.indexOf(Character.toUpperCase(arrayOfChar[i])) != -1 || arg.indexOf(Character.toLowerCase(arrayOfChar[i])) != -1 ;
+			if (Character.isLetter(arrayOfChar[i]) && match ) {
+				if (Character.isLowerCase(arrayOfChar[i])) {
+					result.add(Character.toString(arrayOfChar[i]).toUpperCase());
+				} else if (Character.isUpperCase(arrayOfChar[i])) {
+					result.add(Character.toString(arrayOfChar[i]).toLowerCase());
+				}
+			} else {
+				result.add(Character.toString(arrayOfChar[i]));
+			}
+			
+		}
+
+		return String.join("", result);
 	}
 
     /**
@@ -141,7 +173,21 @@ public class CustomString {
      */
 	public String filterLetters(char n, boolean more) {
 		// TODO Implement method
+		if ( (!Character.isLetter(n) && this.myString != null) || this.myString == null || this.myString == "" || !this.isSet) {return "";}
 		
-		return null;
+		char[] arrayOfChar = this.myString.toCharArray();
+		ArrayList<String> result = new ArrayList<String>();
+
+		if (more) {
+			for (int i = 0; i < arrayOfChar.length; i++) {
+				if (!Character.isLetter(arrayOfChar[i]) || arrayOfChar[i] < n) {
+					result.add(Character.toString(arrayOfChar[i]));
+				} else if (!Character.isLetter(arrayOfChar[i]) || arrayOfChar[i] > n) {
+					result.add(Character.toString(arrayOfChar[i]));
+				}
+			}
+		}
+
+		return String.join("", result);
 	}
 }
