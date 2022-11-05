@@ -22,4 +22,9 @@ public class Customer {
     public String getAddress() {
         return this.address;
     }
+
+    // printing an Object requires implementing / defining the toString method
+    public String toString() {
+        return this.name;
+    }
 }

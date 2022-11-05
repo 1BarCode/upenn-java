@@ -75,6 +75,9 @@ class CustomStringTest {
 
 		this.myCustomString.setString("my lucky numbers are 6, 8, and 19.");
 		assertEquals(" luck nubers are 6, 8, and 19.", this.myCustomString.remove("my.8"));
+
+		this.myCustomString.setString("my lucky numbers are 6, 8, and 19.");
+		assertEquals("my lucky numbers are 6, 8, and 19.", this.myCustomString.remove(""));
 	}
 
 	@Test
@@ -110,7 +113,7 @@ class CustomStringTest {
 		assertEquals("", this.myCustomString.filterLetters('E', false));
 
 		this.myCustomString.setString("Some real test.");
-		assertEquals("a", this.myCustomString.filterLetters('E', true));
+		assertEquals(" a .", this.myCustomString.filterLetters('E', true));
 
 		this.myCustomString.setString("Some real test.");
 		assertEquals("Som rl tst.", this.myCustomString.filterLetters('E', false));

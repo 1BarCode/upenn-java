@@ -90,7 +90,9 @@ public class CustomString {
      */
 	public String remove(String arg) {
 		// TODO Implement method
-		if (arg == "" || arg == null || this.myString == null || !this.isSet) {return "";}
+		if ( arg == null || this.myString == null || !this.isSet) {return "";}
+
+		if (arg == "" && this.isSet) { return this.myString;}
 
 		ArrayList<String> result = new ArrayList<String>();
 		char[] arrayOfChar = this.myString.toCharArray();
@@ -98,7 +100,6 @@ public class CustomString {
 		for (int i = 0; i < arrayOfChar.length; i++) {
 			if (!Character.isLetter(arrayOfChar[i]) || arg.indexOf(arrayOfChar[i]) == -1 ) {
 				result.add(Character.toString(arrayOfChar[i]));
-				System.out.println(result);
 			}
 		}
 
@@ -177,16 +178,22 @@ public class CustomString {
 		
 		char[] arrayOfChar = this.myString.toCharArray();
 		ArrayList<String> result = new ArrayList<String>();
+		char m = Character.toLowerCase(n);
 
-		if (more) {
-			for (int i = 0; i < arrayOfChar.length; i++) {
-				if (!Character.isLetter(arrayOfChar[i]) || arrayOfChar[i] < n) {
+		for (int i = 0; i < arrayOfChar.length; i++) {
+			if (!Character.isLetter(arrayOfChar[i])) {
+				// is not a character
+				result.add(Character.toString(arrayOfChar[i]));
+			} else {
+				// is a character
+				if (more && Character.toLowerCase(arrayOfChar[i]) < m) {
 					result.add(Character.toString(arrayOfChar[i]));
-				} else if (!Character.isLetter(arrayOfChar[i]) || arrayOfChar[i] > n) {
+				} else if (!more && Character.toLowerCase(arrayOfChar[i]) > m ) {
 					result.add(Character.toString(arrayOfChar[i]));
 				}
 			}
 		}
+		
 
 		return String.join("", result);
 	}
