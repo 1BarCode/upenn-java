@@ -28,7 +28,13 @@ class ArrayAndArrayListTest {
 		assertEquals(2, this.myArrayAndArrayList.howMany(array, 1));
 		
 		// TODO write at least 3 additional test cases 
-		
+		int[] array1 = {1, 3, 5, 7, 9, 1, 2, 3, 4, 5};
+		assertEquals(1, this.myArrayAndArrayList.howMany(array1, 2));
+
+		assertEquals(0, this.myArrayAndArrayList.howMany(array1, 10));
+
+		int[] array2 = new int[0];
+		assertEquals(0, this.myArrayAndArrayList.howMany(array2, 2));
 	}
 	
 	/**
@@ -41,7 +47,14 @@ class ArrayAndArrayListTest {
 		assertEquals(9, this.myArrayAndArrayList.findMax(array));
 		
 		// TODO write at least 3 additional test cases 
-		
+		int[] array1 = {2, 4, 8, 12, 12, 4};
+		assertEquals(12, this.myArrayAndArrayList.findMax(array1));
+
+		int[] array2 = new int[0];
+		assertEquals(-1, this.myArrayAndArrayList.findMax(array2));
+
+		int[] array3 = {31, 1, 2, 3, 4, 5, 6 ,7 ,31};
+		assertEquals(31, this.myArrayAndArrayList.findMax(array3));
 	}
 
 	/**
@@ -56,7 +69,21 @@ class ArrayAndArrayListTest {
 		assertEquals(testArrayList, this.myArrayAndArrayList.maxArray(array));
 		
 		// TODO write at least 3 additional test cases 
-		
+		int[] test1 = {};
+		assertEquals(null, myArrayAndArrayList.maxArray(test1));
+
+		int[] test2 = {1, 13, 5, 7, 13, 1, 2, 3, 13, 4, 5};
+		ArrayList<Integer> testArrayList2 = new ArrayList<Integer>();
+		testArrayList2.add(13);
+		testArrayList2.add(13);
+		testArrayList2.add(13);
+		assertEquals(testArrayList2, myArrayAndArrayList.maxArray(test2));
+
+		int[] test3 = {2, 4, 8, 12, 12, 4};
+		ArrayList<Integer> testArrayList3 = new ArrayList<Integer>();
+		testArrayList3.add(12);
+		testArrayList3.add(12);
+		assertEquals(testArrayList3, myArrayAndArrayList.maxArray(test3));
 	}
 
 	/**
@@ -72,6 +99,17 @@ class ArrayAndArrayListTest {
 		
 		
 		// TODO write at least 3 additional test cases 
-		
+		int[] array1 = new int[0];
+		this.myArrayAndArrayList.swapZero(array1);
+		assertArrayEquals(array1, array1);
+
+		int[] array2 = {1, 3, 5, 7, 9, 10};
+		this.myArrayAndArrayList.swapZero(array2);
+		assertArrayEquals(array2, array2);
+
+		int[] array3 = {0, 1, 0, 2, 0, 3, 0, 5, 7, 0, 10};
+		int[] testArray3 = {1, 2, 3, 5, 7, 10, 0, 0, 0, 0, 0};
+		this.myArrayAndArrayList.swapZero(array3);
+		assertArrayEquals(testArray3, array3);
 	}
 }

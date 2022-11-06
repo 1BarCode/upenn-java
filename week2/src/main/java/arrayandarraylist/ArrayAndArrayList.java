@@ -26,7 +26,16 @@ public class ArrayAndArrayList {
 	 */
 	public int howMany(int[] array, int element) {
 		// TODO Implement method
-		return 0;
+		if (array.length == 0) {return 0;}
+
+		int count = 0;
+		for (int num : array) {
+			if (num == element) {
+				count++;
+			}
+		}
+
+		return count;
 	}
 	
 	/**
@@ -48,7 +57,14 @@ public class ArrayAndArrayList {
 	 */
 	public int findMax(int[] array) {
 		// TODO Implement method
-		return 0;
+		if (array.length == 0) {return -1;}
+		int max = array[0];
+		for (int num : array) {
+			if (num > max) {
+				max = num;
+			}
+		}
+		return max;
 	}
 	
 	/**
@@ -72,7 +88,22 @@ public class ArrayAndArrayList {
 	 */
 	public ArrayList<Integer> maxArray(int[] array) {
 		// TODO Implement method
-		return null;
+		if (array.length == 0) {return null;}
+		
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		int max = array[0];
+		result.add(array[0]);
+		for (int num : array) {
+			if (num == max) {
+				result.add(num);
+			} else if (num > max) {
+				max = num;
+				result.clear();
+				result.add(num);
+			}
+		}
+
+		return result;
 	}
 	
 	/**
@@ -94,6 +125,28 @@ public class ArrayAndArrayList {
 	 */
 	public void swapZero(int[] array) {
 		// TODO Implement method
+		if (array.length == 0) {return;}
+
+		ArrayList<Integer> zeroes = new ArrayList<Integer>();
+		ArrayList<Integer> order = new ArrayList<Integer>();
+		
+		
+		for (int num : array) {
+			if (num == 0) {
+				zeroes.add(0);
+			} else {
+				order.add(num);
+			}
+		}
+
+		for (Integer num : zeroes) {
+			order.add(num);
+		}
+
+		for (int i = 0; i < order.size(); i++) {
+			array[i] = order.get(i);
+		}
 		
 	}
 }
+

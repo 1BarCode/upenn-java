@@ -32,7 +32,6 @@ public class App {
             System.out.println(primes[i]);
         }
 
-        
         System.out.println(hunstman);
     }
 }
