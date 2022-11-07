@@ -72,15 +72,22 @@ class CustomIntegerArrayListTest {
 		assertEquals(lst1.get(2), arr1.get(2));
 
 		// TODO write at least 3 additional test cases 
-		arr1.add(2, 500);
-		arr1.add(1000);
+		CustomIntegerArrayList arrA = new CustomIntegerArrayList();
+		ArrayList<Integer> lstA = new ArrayList<Integer>();
 
-		lst1.add(2, 500);
-		lst1.add(1000);
+		arrA.add(2);
+		arrA.add(1, 5);
+		arrA.add(2, 500);
+		arrA.add(1000);
 
-		assertEquals(lst1.get(2), arr1.get(2));
-		assertEquals(lst1.get(3), arr1.get(3));
-		assertEquals(-10, arr1.get(-10));
+		lstA.add(2);
+		lstA.add(1, 5);
+		lstA.add(2, 500);
+		lstA.add(1000);
+
+		assertEquals(500, arrA.get(2));
+		assertEquals(1000, arrA.get(3));
+		assertEquals(-10, arrA.get(-10));
 	}
 
 	@Test
@@ -105,11 +112,11 @@ class CustomIntegerArrayListTest {
 		ArrayList<Integer> lst2 = new ArrayList<Integer>();
 		arr2.add(21);
 		lst2.add(21);
-		assertEquals(lst2.get(0), arr2.get(0));
+		assertEquals(21, arr2.get(0));
 
 		arr2.add(44);
 		lst2.add(44);
-		assertEquals(lst2.get(1), arr2.get(1));
+		assertEquals(44, arr2.get(1));
 
 		arr2.add(67);
 		lst2.add(67);
@@ -138,11 +145,11 @@ class CustomIntegerArrayListTest {
 		ArrayList<Integer> lst2 = new ArrayList<Integer>();
 		arr2.add(0, 100);
 		lst2.add(0, 100);
-		assertEquals(lst2.get(0), arr2.get(0));
+		assertEquals(100, arr2.get(0));
 
 		arr2.add(1, 200);
 		lst2.add(1, 200);
-		assertEquals(lst2.get(1), arr2.get(1));
+		assertEquals(200, arr2.get(1));
 
 		arr2.add(1, 500);
 		lst2.add(1, 500);
@@ -188,7 +195,6 @@ class CustomIntegerArrayListTest {
 		arr2.remove(0);
 		lst2.remove(0);
 		assertEquals(200, arr2.get(0));
-		assertEquals(lst2.get(0), arr2.get(0));
 
 		assertEquals(-10, arr2.remove(-10));
 	}
@@ -286,6 +292,25 @@ class CustomIntegerArrayListTest {
 		assertEquals(lst1, arr1.getArrayList());
 
 		// TODO write at least 3 additional test cases 
+		CustomIntegerArrayList arr2 = new CustomIntegerArrayList(new ArrayList<Integer>(Arrays.asList(1,2,3,4,5)));
+		ArrayList<Integer> lst2 = new ArrayList<Integer>(Arrays.asList(1,6,7,4,5));
+		ArrayList<Integer> lst2b = new ArrayList<Integer>(Arrays.asList(2,3));
+		assertEquals(lst2b, arr2.splice(1, 2, new int[] {6, 7}));
+		assertEquals(lst2, arr2.getArrayList());
+
+		CustomIntegerArrayList arr3 = new CustomIntegerArrayList(new ArrayList<Integer>(Arrays.asList(1,2,3,4,5)));
+		ArrayList<Integer> lst3 = new ArrayList<Integer>(Arrays.asList(1,2,3,1000,1001));
+		ArrayList<Integer> lst3b = new ArrayList<Integer>(Arrays.asList(4,5));
+		assertEquals(lst3b, arr3.splice(3, 4, new int[] {1000, 1001}));
+		assertEquals(lst3, arr3.getArrayList());
+
+		CustomIntegerArrayList arr4 = new CustomIntegerArrayList(new ArrayList<Integer>(Arrays.asList(100, 200, 500)));
+		ArrayList<Integer> lst4 = new ArrayList<Integer>();
+		assertEquals(lst4, arr4.splice(1, 0, new int[] {700}));
+
+		CustomIntegerArrayList arr5 = new CustomIntegerArrayList(new ArrayList<Integer>(Arrays.asList(5,2,7,3,7,8)));
+		ArrayList<Integer> lst5 = new ArrayList<Integer>();
+		assertEquals(lst5, arr5.splice(6, 3, new int[] {9}));
 	}
 
 }

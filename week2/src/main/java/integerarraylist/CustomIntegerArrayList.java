@@ -263,6 +263,8 @@ public class CustomIntegerArrayList {
 			}
 		}
 
+		return arr;
+
 		// int remaining = arr.size() - index;
 		// if (num > remaining) { // there are more remaining than the num to remove		
 		// 	while (remaining > 0) {
@@ -276,7 +278,7 @@ public class CustomIntegerArrayList {
 		// 	}
 		// }
 
-		return arr;
+		// return arr;
 	}
 
 	/**
@@ -321,7 +323,34 @@ public class CustomIntegerArrayList {
 	 */
 	public ArrayList<Integer> splice(int index, int num, int[] otherArray) {
 		// TODO Implement method
-		return null;
+		if (index < 0 || index >= arr.size() || num == 0) {return new ArrayList<Integer>();}
+
+		ArrayList<Integer> result = new ArrayList<>();
+
+		int remaining = 0;
+		for (int i = index; i < arr.size(); i++) {
+			remaining++;
+		}
+
+		if (remaining >= num) { // there are more remaining than the num to remove		
+			while (num > 0) {
+				Integer removed = arr.remove(index);
+				result.add(removed);
+				num--;
+			}
+		} else {
+			while (remaining > 0) {
+				Integer removed = arr.remove(index);
+				result.add(removed);
+				remaining--;
+			}
+		}
+
+		for (int j = otherArray.length - 1; j >= 0; j--) {
+			arr.add(index, Integer.valueOf(otherArray[j]));
+		}
+
+		return result;
 	}
 	
 	public static void main(String args[]) {
