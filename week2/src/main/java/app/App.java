@@ -28,7 +28,7 @@ public class App {
         // int[] set;
         // set = new int[20];
 
-        for (int i = 0; i <= 5; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println(primes[i]);
         }
 
