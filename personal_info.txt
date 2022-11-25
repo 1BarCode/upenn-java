@@ -1,0 +1,6 @@
+CourseName: MCIT_590
+CourseID: 590
+StudentID: 101
+Name: Jack2
+FavoriteColor: Blue
+FavoriteNumber: 69
